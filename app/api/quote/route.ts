@@ -1,5 +1,4 @@
 import { NextResponse } from "next/server";
-import { Resend } from "resend";
 
 export const runtime = "nodejs";
 
@@ -31,13 +30,24 @@ export async function POST(req: Request) {
   const to = process.env.QUOTE_TO;
   if (key && to) {
     try {
-      const resend = new Resend(key);
-      await resend.emails.send({
-        from: process.env.QUOTE_FROM || "Sunshine Demolition <onboarding@resend.dev>",
-        to: to.split(",").map((s) => s.trim()),
-        subject: `New quote request: ${lead.service || "Junk removal"} in ${lead.city || "Broward"} - ${lead.name}`,
-        text: `Name: ${lead.name}\nPhone: ${lead.phone}\nCity: ${lead.city}\nService: ${lead.service}\n\n${lead.details}\n\n${lead.at}`,
+      const r = await fetch("https://api.resend.com/emails", {
+        method: "POST",
+        headers: { Authorization: `Bearer ${key}`, "content-type": "application/json" },
+        body: JSON.stringify({
+          from: process.env.QUOTE_FROM || "Sunshine Demolition <onboarding@resend.dev>",
+          to: to.split(",").map((s) => s.trim()),
+          subject: `New quote request: ${lead.service || "Junk removal"} in ${lead.city || "Broward"} - ${lead.name}`,
+          text: `Name: ${lead.name}
+Phone: ${lead.phone}
+City: ${lead.city}
+Service: ${lead.service}
+
+${lead.details}
+
+${lead.at}`,
+        }),
       });
+      if (!r.ok) console.error("QUOTE_EMAIL_FAILED", r.status, await r.text());
     } catch (e) {
       console.error("QUOTE_EMAIL_FAILED", e);
     }
