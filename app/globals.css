@@ -91,3 +91,19 @@ footer a { text-decoration: none; font-weight: 600; color: var(--ink); }
 .callbar { position: fixed; bottom: 0; left: 0; right: 0; z-index: 30; display: grid; grid-template-columns: 1fr 1fr; gap: 8px; padding: 10px 12px calc(10px + env(safe-area-inset-bottom)); background: rgba(20,20,20,.96); }
 .callbar .btn { padding: 12px; font-size: .95rem; }
 @media (min-width: 820px) { .callbar { display: none; } footer { padding-bottom: 40px; } }
+
+/* sub-page hero, prose, faq, link cards */
+.hero-sub .wrap { padding-top: 56px; padding-bottom: 48px; }
+.crumb { font-size: .9rem; color: #ccc !important; margin: 0 0 10px !important; }
+.crumb a { color: #fff; }
+.prose p { font-size: 1.08rem; color: var(--ink-2); max-width: 760px; }
+.svc-link { text-decoration: none; display: block; transition: border-color .15s ease, transform .1s ease; }
+.svc-link:hover { border-color: var(--yellow-dark); transform: translateY(-2px); }
+.checks { list-style: none; padding: 0; margin: 0; display: grid; gap: 10px; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); }
+.checks li { background: #fff; border: 1px solid var(--line); border-radius: 10px; padding: 12px 14px; }
+.faq details { border-bottom: 1px solid var(--line); padding: 14px 0; }
+.faq summary { cursor: pointer; font-weight: 700; font-size: 1.05rem; }
+.faq p { margin: 10px 0 0; color: var(--ink-2); max-width: 760px; }
+.cities a { text-decoration: none; }
+.cities li:has(a):hover { border-color: var(--yellow-dark); }
+.foot-links { line-height: 1.9; }

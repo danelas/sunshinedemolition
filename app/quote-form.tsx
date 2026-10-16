@@ -3,7 +3,7 @@ import { useState } from "react";
 
 type State = "idle" | "sending" | "ok" | "err";
 
-export default function QuoteForm() {
+export default function QuoteForm({ defaultCity = "", defaultService = "Junk Removal" }: { defaultCity?: string; defaultService?: string } = {}) {
   const [state, setState] = useState<State>("idle");
   const [error, setError] = useState("");
 
@@ -39,14 +39,15 @@ export default function QuoteForm() {
         <div className="field"><label htmlFor="q-phone">Phone</label><input id="q-phone" name="phone" type="tel" required autoComplete="tel" /></div>
       </div>
       <div className="row2">
-        <div className="field"><label htmlFor="q-city">City</label><input id="q-city" name="city" placeholder="Fort Lauderdale" autoComplete="address-level2" /></div>
+        <div className="field"><label htmlFor="q-city">City</label><input id="q-city" name="city" placeholder="Fort Lauderdale" defaultValue={defaultCity} autoComplete="address-level2" /></div>
         <div className="field"><label htmlFor="q-service">Service</label>
-          <select id="q-service" name="service" defaultValue="Junk removal">
-            <option>Junk removal</option>
+          <select id="q-service" name="service" defaultValue={defaultService}>
+            <option>Junk Removal</option>
+            <option>Appliance & Furniture Removal</option>
+            <option>Yard & Storm Debris Removal</option>
+            <option>Home, Office & Warehouse Cleanouts</option>
+            <option>Hoarder Cleanouts</option>
             <option>Demolition</option>
-            <option>Cleanout</option>
-            <option>Yard debris</option>
-            <option>Appliance / furniture pickup</option>
             <option>Other</option>
           </select>
         </div>

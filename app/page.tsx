@@ -1,22 +1,15 @@
 import Image from "next/image";
+import Link from "next/link";
+import { cities } from "@/lib/geo";
+import { services } from "@/lib/services";
+import { SiteHeader, SiteFooter, CallBar, CtaBand } from "./chrome";
 import { site } from "@/lib/site";
 import QuoteForm from "./quote-form";
 
 export default function Home() {
   return (
     <>
-      <header className="hdr">
-        <div className="wrap">
-          <a className="brand" href="#top"><span />{site.name}</a>
-          <nav>
-            <a href="#services">Services</a>
-            <a href="#work">Our Work</a>
-            <a href="#areas">Service Area</a>
-            <a href="#quote">Free Quote</a>
-          </nav>
-          <a className="call" href={site.phoneHref} data-cta="header-call">📞 {site.phone}</a>
-        </div>
-      </header>
+      <SiteHeader />
 
       <main id="top">
         <div className="hero">
@@ -45,8 +38,8 @@ export default function Home() {
             <h2>What we haul and tear out</h2>
             <p className="lead">If it needs to go, we take it. One crew, one visit, one flat price. Donatable and recyclable items are kept out of the landfill whenever possible.</p>
             <div className="grid">
-              {site.services.map((s) => (
-                <div className="svc" key={s.title}><h3>{s.title}</h3><p>{s.desc}</p></div>
+              {services.map((s) => (
+                <Link className="svc svc-link" href={`/services/${s.slug}`} key={s.slug}><h3>{s.title}</h3><p>{s.short}</p></Link>
               ))}
             </div>
           </div>
@@ -81,30 +74,16 @@ export default function Home() {
           <div className="wrap">
             <h2>Serving all of {site.area}</h2>
             <p className="lead">Based in {site.city}. Fast service across the county, including:</p>
-            <ul className="cities">{site.cities.map((c) => <li key={c}>{c}</li>)}</ul>
+            <ul className="cities">{cities.map((c) => <li key={c.slug}><Link href={`/junk-removal/${c.slug}`}>Junk removal in {c.name}</Link></li>)}</ul>
           </div>
         </section>
 
-        <div className="cta-band">
-          <div className="wrap">
-            <div><h2>Ready to get rid of it?</h2><p>Call now for a free estimate. Most jobs done same day or next day.</p></div>
-            <a className="btn btn-dark" href={site.phoneHref} data-cta="band-call">Call {site.phone}</a>
-          </div>
-        </div>
+        <CtaBand />
       </main>
 
-      <footer>
-        <div className="wrap">
-          <div><strong>{site.name}</strong> · {site.tagline}</div>
-          <div><a href={site.phoneHref}>{site.phone}</a> · {site.city}</div>
-          <div>© {new Date().getFullYear()} {site.name}. All rights reserved.</div>
-        </div>
-      </footer>
+      <SiteFooter />
 
-      <div className="callbar">
-        <a className="btn btn-primary" href={site.phoneHref} data-cta="bar-call">📞 Call now</a>
-        <a className="btn btn-dark" href="#quote" data-cta="bar-quote">Free quote</a>
-      </div>
+      <CallBar />
     </>
   );
 }
