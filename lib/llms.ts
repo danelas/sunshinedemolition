@@ -7,11 +7,15 @@ const U = site.url;
 export function llmsIndex(): string {
   return `# ${site.name}
 
-> ${site.name} is a junk removal and light demolition company serving all of Broward County, Florida, based in Fort Lauderdale. Same-day and next-day service, free on-site estimates, flat volume-based pricing, licensed and insured. Residential and commercial.
+> ${site.name} is a junk removal and light demolition company serving all of Broward County, Florida, based at 2405 N 21st Ave, Hollywood, FL 33020. Open 6 AM to 11 PM, seven days a week. Same-day and next-day service, free on-site estimates, flat volume-based pricing, licensed and insured. Residential and commercial.
 
 ## How to contact or book
 
 - Phone (call or text): ${site.phone} (${site.phoneHref})
+- Address: ${site.address.street}, ${site.address.city}, ${site.address.region} ${site.address.zip}
+- Hours: ${site.hours}
+- Payment: all major methods accepted (cash, cards, Zelle, Venmo, Cash App, Apple Pay, check)
+- Profiles: ${Object.values(site.socials).filter(Boolean).join(", ")}
 - Free quote form: ${U}/#quote
 - Quote API (POST JSON {name, phone, city, service, details}): ${U}/api/quote
 - Service area: Broward County, FL, including ${cities.map((c) => c.name).join(", ")}

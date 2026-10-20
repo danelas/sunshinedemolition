@@ -7,7 +7,7 @@ export function SiteHeader() {
   return (
     <header className="hdr">
       <div className="wrap">
-        <Link className="brand" href="/"><span />{site.name}</Link>
+        <Link className="brand" href="/"><img src={site.logo} alt={site.name} width={56} height={41} /><span className="brand-text">{site.name}</span></Link>
         <nav>
           <Link href="/#services">Services</Link>
           <Link href="/#work">Our Work</Link>
@@ -39,7 +39,8 @@ export function SiteFooter() {
     <footer>
       <div className="wrap">
         <div><strong>{site.name}</strong> · {site.tagline}</div>
-        <div><a href={site.phoneHref}>{site.phone}</a> · {site.city}</div>
+        <div><a href={site.phoneHref}>{site.phone}</a> · {site.address.street}, {site.address.city}, {site.address.region} {site.address.zip}</div>
+        <div>Open {site.hours}</div>
         <div className="foot-links">
           <strong>Services:</strong>{" "}
           {services.map((s, i) => (

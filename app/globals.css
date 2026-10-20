@@ -26,7 +26,9 @@ img { max-width: 100%; display: block; }
 .hdr { position: sticky; top: 0; z-index: 20; background: rgba(255,255,255,.95); backdrop-filter: blur(8px); border-bottom: 1px solid var(--line); }
 .hdr .wrap { display: flex; align-items: center; justify-content: space-between; height: 64px; gap: 12px; }
 .brand { font-weight: 900; letter-spacing: .02em; text-transform: uppercase; text-decoration: none; display: flex; align-items: center; gap: 10px; }
-.brand span { background: var(--yellow); width: 28px; height: 28px; border-radius: 6px; display: inline-block; }
+.brand img { height: 40px; width: auto; border-radius: 6px; }
+.brand-text { display: none; }
+@media (min-width: 600px) { .brand-text { display: inline; } }
 .hdr nav { display: none; gap: 22px; font-weight: 600; }
 .hdr nav a { text-decoration: none; }
 .hdr .call { font-weight: 800; text-decoration: none; white-space: nowrap; }

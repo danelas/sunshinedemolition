@@ -10,13 +10,13 @@ export type City = {
 export const cities: City[] = [
   {
     slug: "fort-lauderdale", name: "Fort Lauderdale", zips: ["33301", "33304", "33305", "33308", "33312", "33315", "33316"],
-    blurb: "Our home base. From Victoria Park bungalows to Las Olas condos and Harbor Beach estates, we run multiple loads a day across Fort Lauderdale.",
+    blurb: "From Victoria Park bungalows to Las Olas condos and Harbor Beach estates, we run multiple loads a day across Fort Lauderdale, fifteen minutes up I-95 from our Hollywood yard.",
     local: "Condo and high-rise jobs are routine for us: we coordinate with building management on elevator reservations and loading-dock windows, and we handle the paperwork most HOAs ask for before a crew comes in. Older Rio Vista and Poinsettia Heights homes keep us busy with kitchen and bathroom tear-outs ahead of renovations.",
     nearby: ["plantation", "hollywood", "pompano-beach", "sunrise"],
   },
   {
     slug: "hollywood", name: "Hollywood", zips: ["33019", "33020", "33021", "33023", "33024"],
-    blurb: "Hollywood Lakes, Emerald Hills, the beach condos along A1A and the older blocks west of I-95. If it is in Hollywood, we have probably hauled from it.",
+    blurb: "Our home base. Our yard is on N 21st Ave, so Hollywood Lakes, Emerald Hills, the beach condos along A1A and the blocks west of I-95 are all minutes away.",
     local: "Hollywood has a lot of 1950s and 60s housing stock changing hands, which means estate cleanouts, garage purges and full interior demos before remodels. We also serve the Hollywood Beach condo corridor, where tight parking and service elevators call for a crew that has done it before.",
     nearby: ["hallandale-beach", "pembroke-pines", "davie", "fort-lauderdale"],
   },

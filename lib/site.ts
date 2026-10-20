@@ -1,11 +1,20 @@
 export const site = {
   name: "Sunshine Demolition",
+  legalName: "Sunshine Demolition And Junk Removal",
   tagline: "Junk Removal & Demolition in Broward County",
   phone: "(954) 871-9578",
   phoneHref: "tel:+19548719578",
   smsHref: "sms:+19548719578",
   area: "Broward County, Florida",
-  city: "Fort Lauderdale, FL",
+  city: "Hollywood, FL",
+  address: { street: "2405 N 21st Ave", city: "Hollywood", region: "FL", zip: "33020" },
+  hours: "6 AM - 11 PM, 7 days a week",
+  logo: "/logo.jpg",
+  socials: {
+    facebook: "https://www.facebook.com/people/Sunshine-Demolition/100089965490633/",
+    youtube: "",
+    googleBusiness: "https://maps.google.com/?cid=15102517605603859209",
+  },
   url: "https://sunshinedemolition.com",
   services: [
     { title: "Junk Removal", desc: "Furniture, appliances, mattresses, electronics, construction debris. We load it, haul it, and sweep up." },
