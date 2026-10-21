@@ -12,6 +12,8 @@ export function llmsIndex(): string {
 ## How to contact or book
 
 - Phone (call or text): ${site.phone} (${site.phoneHref})
+- Email: ${site.email}
+- Contact page / general inquiries: ${U}/contact (POST JSON {name, email, phone, subject, message} to ${U}/api/contact)
 - Address: ${site.address.street}, ${site.address.city}, ${site.address.region} ${site.address.zip}
 - Hours: ${site.hours}
 - Payment: all major methods accepted (cash, cards, Zelle, Venmo, Cash App, Apple Pay, check)

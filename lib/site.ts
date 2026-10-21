@@ -5,6 +5,7 @@ export const site = {
   phone: "(954) 871-9578",
   phoneHref: "tel:+19548719578",
   smsHref: "sms:+19548719578",
+  email: "Sunshinejunkdemo@gmail.com",
   area: "Broward County, Florida",
   city: "Hollywood, FL",
   address: { street: "2405 N 21st Ave", city: "Hollywood", region: "FL", zip: "33020" },

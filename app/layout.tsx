@@ -29,6 +29,7 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
     alternateName: site.legalName,
     description: "Junk removal, cleanouts and light demolition across Broward County, Florida. Same-day service, free on-site estimates, flat pricing, licensed and insured.",
     telephone: "+19548719578",
+    email: site.email,
     url: site.url,
     hasMap: site.socials.googleBusiness,
     image: [`${site.url}/og.jpg`, `${site.url}/photos/project-02.webp`],

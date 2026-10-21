@@ -109,3 +109,9 @@ footer a { text-decoration: none; font-weight: 600; color: var(--ink); }
 .cities a { text-decoration: none; }
 .cities li:has(a):hover { border-color: var(--yellow-dark); }
 .foot-links { line-height: 1.9; }
+
+.contact-facts { list-style: none; padding: 0; margin: 22px 0 0; display: grid; gap: 10px; font-size: 1rem; color: #eee; }
+.contact-facts li { display: grid; grid-template-columns: 70px 1fr; gap: 10px; }
+.contact-facts strong { color: var(--yellow); font-size: .85rem; text-transform: uppercase; letter-spacing: .04em; padding-top: 2px; }
+.contact-facts a { color: #fff; text-decoration: none; }
+.contact-facts a:hover { text-decoration: underline; }

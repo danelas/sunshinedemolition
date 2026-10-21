@@ -12,6 +12,7 @@ export function SiteHeader() {
           <Link href="/#services">Services</Link>
           <Link href="/#work">Our Work</Link>
           <Link href="/#areas">Service Area</Link>
+          <Link href="/contact">Contact</Link>
           <Link href="/#quote">Free Quote</Link>
         </nav>
         <a className="call" href={site.phoneHref} data-cta="header-call">📞 {site.phone}</a>
@@ -40,7 +41,7 @@ export function SiteFooter() {
       <div className="wrap">
         <div><strong>{site.name}</strong> · {site.tagline}</div>
         <div><a href={site.phoneHref}>{site.phone}</a> · {site.address.street}, {site.address.city}, {site.address.region} {site.address.zip}</div>
-        <div>Open {site.hours}</div>
+        <div>Open {site.hours} · <a href={`mailto:${site.email}`}>{site.email}</a> · <Link href="/contact">Contact</Link></div>
         <div className="foot-links">
           <strong>Services:</strong>{" "}
           {services.map((s, i) => (
