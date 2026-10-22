@@ -2,6 +2,7 @@ import Link from "next/link";
 import { site } from "@/lib/site";
 import { services } from "@/lib/services";
 import { cities } from "@/lib/geo";
+import { Icon } from "./icons";
 
 export function SiteHeader() {
   return (
@@ -15,7 +16,7 @@ export function SiteHeader() {
           <Link href="/contact">Contact</Link>
           <Link href="/#quote">Free Quote</Link>
         </nav>
-        <a className="call" href={site.phoneHref} data-cta="header-call">📞 {site.phone}</a>
+        <a className="call" href={site.phoneHref} data-cta="header-call"><Icon name="phone" size={18} />{site.phone}</a>
       </div>
     </header>
   );
@@ -29,7 +30,7 @@ export function CtaBand({ city }: { city?: string }) {
           <h2>Ready to get rid of it{city ? ` in ${city}` : ""}?</h2>
           <p>Call now for a free estimate. Most jobs done same day or next day.</p>
         </div>
-        <a className="btn btn-dark" href={site.phoneHref} data-cta="band-call">Call {site.phone}</a>
+        <a className="btn btn-dark" href={site.phoneHref} data-cta="band-call"><Icon name="phone" size={18} />Call {site.phone}</a>
       </div>
     </div>
   );
@@ -39,9 +40,13 @@ export function SiteFooter() {
   return (
     <footer>
       <div className="wrap">
-        <div><strong>{site.name}</strong> · {site.tagline}</div>
-        <div><a href={site.phoneHref}>{site.phone}</a> · {site.address.street}, {site.address.city}, {site.address.region} {site.address.zip}</div>
-        <div>Open {site.hours} · <a href={`mailto:${site.email}`}>{site.email}</a> · <Link href="/contact">Contact</Link></div>
+        <div className="foot-brand"><img src={site.logo} alt="" width={64} height={47} /><div><strong>{site.name}</strong><br />{site.tagline}</div></div>
+        <ul className="foot-facts">
+          <li><Icon name="phone" size={16} /><a href={site.phoneHref}>{site.phone}</a></li>
+          <li><Icon name="mail" size={16} /><a href={`mailto:${site.email}`}>{site.email}</a></li>
+          <li><Icon name="pin" size={16} /><a href={site.socials.googleBusiness} target="_blank" rel="noopener">{site.address.street}, {site.address.city}, {site.address.region} {site.address.zip}</a></li>
+          <li><Icon name="clock" size={16} /><span>Open {site.hours}</span></li>
+        </ul>
         <div className="foot-links">
           <strong>Services:</strong>{" "}
           {services.map((s, i) => (
@@ -63,8 +68,8 @@ export function SiteFooter() {
 export function CallBar() {
   return (
     <div className="callbar">
-      <a className="btn btn-primary" href={site.phoneHref} data-cta="bar-call">📞 Call now</a>
-      <a className="btn btn-dark" href="#quote" data-cta="bar-quote">Free quote</a>
+      <a className="btn btn-primary" href={site.phoneHref} data-cta="bar-call"><Icon name="phone" size={18} />Call now</a>
+      <a className="btn btn-dark" href="#quote" data-cta="bar-quote"><Icon name="clipboard" size={18} />Free quote</a>
     </div>
   );
 }
@@ -74,7 +79,7 @@ export function Faq({ faqs }: { faqs: { q: string; a: string }[] }) {
     <div className="faq">
       {faqs.map((f) => (
         <details key={f.q}>
-          <summary>{f.q}</summary>
+          <summary>{f.q}<Icon name="arrow" size={18} className="faq-chev" /></summary>
           <p>{f.a}</p>
         </details>
       ))}

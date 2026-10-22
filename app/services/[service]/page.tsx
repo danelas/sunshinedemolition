@@ -6,6 +6,7 @@ import { cities } from "@/lib/geo";
 import { services, serviceBySlug } from "@/lib/services";
 import { SiteHeader, SiteFooter, CallBar, CtaBand, Faq, faqSchema } from "@/app/chrome";
 import QuoteForm from "@/app/quote-form";
+import { Icon } from "@/app/icons";
 
 type Props = { params: Promise<{ service: string }> };
 
@@ -63,10 +64,11 @@ export default async function ServicePage({ params }: Props) {
           <div className="wrap">
             <div>
               <p className="crumb"><Link href="/">Home</Link> › Services › {s.title}</p>
+              <span className="hero-icon"><Icon name={s.icon} size={34} /></span>
               <h1>{s.title} in <em>Broward County</em></h1>
               <p>{s.short}</p>
               <div className="ctas">
-                <a className="btn btn-primary" href={site.phoneHref} data-cta="hero-call">Call {site.phone}</a>
+                <a className="btn btn-primary" href={site.phoneHref} data-cta="hero-call"><Icon name="phone" size={18} />Call {site.phone}</a>
                 <a className="btn btn-ghost" style={{ borderColor: "#fff", color: "#fff" }} href="#quote" data-cta="hero-quote">Get a free quote</a>
               </div>
             </div>
@@ -85,7 +87,7 @@ export default async function ServicePage({ params }: Props) {
           <div className="wrap">
             <h2>What&apos;s included</h2>
             <ul className="checks">
-              {s.items.map((i) => <li key={i}>✔ {i}</li>)}
+              {s.items.map((i) => <li key={i}><Icon name="check" size={18} />{i}</li>)}
             </ul>
           </div>
         </section>
@@ -101,7 +103,7 @@ export default async function ServicePage({ params }: Props) {
           <div className="wrap">
             <h2>{s.title} across Broward County</h2>
             <ul className="cities">
-              {cities.map((c) => <li key={c.slug}><Link href={`/junk-removal/${c.slug}`}>{c.name}</Link></li>)}
+              {cities.map((c) => <li key={c.slug}><Link href={`/junk-removal/${c.slug}`}><Icon name="pin" size={15} />{c.name}</Link></li>)}
             </ul>
           </div>
         </section>

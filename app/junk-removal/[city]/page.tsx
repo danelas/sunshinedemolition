@@ -6,6 +6,7 @@ import { cities, cityBySlug } from "@/lib/geo";
 import { services } from "@/lib/services";
 import { SiteHeader, SiteFooter, CallBar, CtaBand, Faq, faqSchema } from "@/app/chrome";
 import QuoteForm from "@/app/quote-form";
+import { Icon } from "@/app/icons";
 
 type Props = { params: Promise<{ city: string }> };
 
@@ -71,13 +72,13 @@ export default async function CityPage({ params }: Props) {
               <h1>Junk Removal &amp; Demolition in <em>{c.name}, FL</em></h1>
               <p>{c.blurb}</p>
               <div className="ctas">
-                <a className="btn btn-primary" href={site.phoneHref} data-cta="hero-call">Call {site.phone}</a>
+                <a className="btn btn-primary" href={site.phoneHref} data-cta="hero-call"><Icon name="phone" size={18} />Call {site.phone}</a>
                 <a className="btn btn-ghost" style={{ borderColor: "#fff", color: "#fff" }} href="#quote" data-cta="hero-quote">Get a free quote</a>
               </div>
               <div className="trust"><ul>
-                <li>✔ Same-day service in {c.name}</li>
-                <li>✔ Free on-site estimates</li>
-                <li>✔ Licensed &amp; insured</li>
+                <li><Icon name="bolt" size={18} />Same-day service in {c.name}</li>
+                <li><Icon name="tag" size={18} />Free on-site estimates</li>
+                <li><Icon name="shield" size={18} />Licensed &amp; insured</li>
               </ul></div>
             </div>
             <QuoteForm defaultCity={c.name} />
@@ -99,7 +100,9 @@ export default async function CityPage({ params }: Props) {
             <div className="grid">
               {services.map((s) => (
                 <Link className="svc svc-link" href={`/services/${s.slug}`} key={s.slug}>
+                  <span className="svc-icon"><Icon name={s.icon} size={28} /></span>
                   <h3>{s.title}</h3><p>{s.short}</p>
+                  <span className="svc-more">Learn more<Icon name="arrow" size={16} /></span>
                 </Link>
               ))}
             </div>
@@ -119,7 +122,7 @@ export default async function CityPage({ params }: Props) {
             <ul className="cities">
               {c.nearby.map((slug) => {
                 const n = cityBySlug(slug);
-                return n ? <li key={slug}><Link href={`/junk-removal/${n.slug}`}>{n.name}</Link></li> : null;
+                return n ? <li key={slug}><Link href={`/junk-removal/${n.slug}`}><Icon name="pin" size={15} />{n.name}</Link></li> : null;
               })}
               <li><Link href="/#areas">All of Broward County</Link></li>
             </ul>

@@ -3,6 +3,7 @@ import Link from "next/link";
 import { site } from "@/lib/site";
 import { SiteHeader, SiteFooter, CallBar } from "@/app/chrome";
 import ContactForm from "./contact-form";
+import { Icon } from "@/app/icons";
 
 export const metadata: Metadata = {
   title: `Contact ${site.name} | Junk Removal & Demolition, Hollywood FL`,
@@ -29,14 +30,14 @@ export default function ContactPage() {
               <h1>Talk to <em>{site.name}</em></h1>
               <p>Fastest answer is a call or text. For anything else, the form on this page lands in our inbox and we reply the same day.</p>
               <div className="ctas">
-                <a className="btn btn-primary" href={site.phoneHref} data-cta="hero-call">Call {site.phone}</a>
-                <a className="btn btn-ghost" style={{ borderColor: "#fff", color: "#fff" }} href={site.smsHref} data-cta="hero-text">Text us</a>
+                <a className="btn btn-primary" href={site.phoneHref} data-cta="hero-call"><Icon name="phone" size={18} />Call {site.phone}</a>
+                <a className="btn btn-ghost" style={{ borderColor: "#fff", color: "#fff" }} href={site.smsHref} data-cta="hero-text"><Icon name="message" size={18} />Text us</a>
               </div>
               <ul className="contact-facts">
-                <li><strong>Phone</strong><a href={site.phoneHref}>{site.phone}</a></li>
-                <li><strong>Email</strong><a href={`mailto:${site.email}`}>{site.email}</a></li>
-                <li><strong>Hours</strong><span>{site.hours}</span></li>
-                <li><strong>Yard</strong><a href={site.socials.googleBusiness} target="_blank" rel="noopener">{site.address.street}, {site.address.city}, {site.address.region} {site.address.zip}</a></li>
+                <li><Icon name="phone" size={20} /><strong>Phone</strong><a href={site.phoneHref}>{site.phone}</a></li>
+                <li><Icon name="mail" size={20} /><strong>Email</strong><a href={`mailto:${site.email}`}>{site.email}</a></li>
+                <li><Icon name="clock" size={20} /><strong>Hours</strong><span>{site.hours}</span></li>
+                <li><Icon name="pin" size={20} /><strong>Yard</strong><a href={site.socials.googleBusiness} target="_blank" rel="noopener">{site.address.street}, {site.address.city}, {site.address.region} {site.address.zip}</a></li>
               </ul>
             </div>
             <ContactForm />

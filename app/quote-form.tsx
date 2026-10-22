@@ -1,5 +1,6 @@
 "use client";
 import { useState } from "react";
+import { Icon } from "@/app/icons";
 
 type State = "idle" | "sending" | "ok" | "err";
 
@@ -56,6 +57,7 @@ export default function QuoteForm({ defaultCity = "", defaultService = "Junk Rem
       <input className="hp" name="website" tabIndex={-1} autoComplete="off" aria-hidden="true" />
       <button className="btn btn-primary" type="submit" disabled={state === "sending"} style={{ width: "100%" }} data-cta="form-submit">
         {state === "sending" ? "Sending…" : "Send my free quote request"}
+        {state !== "sending" && <Icon name="arrow" size={18} />}
       </button>
       {state === "ok" && <p className="msg ok">Got it. We&apos;ll call or text you shortly.</p>}
       {state === "err" && <p className="msg err">{error} Please call us instead.</p>}

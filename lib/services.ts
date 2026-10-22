@@ -1,5 +1,8 @@
+import type { IconName } from "@/app/icons";
+
 export type Service = {
   slug: string;
+  icon: IconName;
   title: string;
   short: string;
   intro: string;
@@ -10,6 +13,7 @@ export type Service = {
 export const services: Service[] = [
   {
     slug: "junk-removal",
+    icon: "truck",
     title: "Junk Removal",
     short: "Furniture, appliances, mattresses, electronics, construction debris. We load it, haul it, and sweep up.",
     intro: "Point at it and it is gone. Our two-person crews do all the lifting, carry items from anywhere on the property, load the trailer, and sweep the area before leaving. You pay a flat price based on how much space your junk takes up, confirmed before we start.",
@@ -22,6 +26,7 @@ export const services: Service[] = [
   },
   {
     slug: "demolition",
+    icon: "hammer",
     title: "Demolition",
     short: "Sheds, decks, fences, kitchens, bathrooms, interior walls, pool decks, tile and flooring tear-outs.",
     intro: "Light demolition done right: cleanly, safely and with everything hauled away the same day. We handle interior tear-outs ahead of renovations and the removal of outdoor structures that have outlived their usefulness.",
@@ -34,6 +39,7 @@ export const services: Service[] = [
   },
   {
     slug: "appliance-furniture-removal",
+    icon: "fridge",
     title: "Appliance & Furniture Removal",
     short: "Refrigerators, A/C units, washers, dryers, couches and more, disposed of responsibly.",
     intro: "Big, heavy and awkward is our specialty. We remove single items or a whole house worth of furniture and appliances, including from upper floors and condo units, and we dispose of appliances with refrigerant the legal way.",
@@ -45,6 +51,7 @@ export const services: Service[] = [
   },
   {
     slug: "yard-storm-debris",
+    icon: "palm",
     title: "Yard & Storm Debris Removal",
     short: "Branches, palm fronds, leaves, fencing and anything a storm leaves behind.",
     intro: "South Florida yards generate a lot of debris, and hurricane season generates a lot more. We clear branches, fronds, downed fencing, old landscaping and storm damage, and haul it off so you are not waiting weeks for a bulk pickup.",
@@ -56,6 +63,7 @@ export const services: Service[] = [
   },
   {
     slug: "cleanouts",
+    icon: "building",
     title: "Home, Office & Warehouse Cleanouts",
     short: "Estate cleanouts, move-outs, evictions, retail and commercial properties.",
     intro: "When an entire space needs to be emptied, we send a crew that can do it in a day. Estates, rentals between tenants, foreclosures, offices closing or relocating, retail shops and warehouses. You tell us what stays and we remove everything else.",
@@ -67,6 +75,7 @@ export const services: Service[] = [
   },
   {
     slug: "hoarder-cleanouts",
+    icon: "heart-home",
     title: "Hoarder Cleanouts",
     short: "Discreet, judgment-free, done in a day whenever possible.",
     intro: "We help families and property owners take back a home that has gotten out of hand. Our crews are respectful, discreet and experienced with the realities of these jobs: tight paths, heavy accumulation, sanitation concerns and emotional stress. We work at the pace you set.",

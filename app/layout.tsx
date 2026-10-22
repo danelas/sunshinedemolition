@@ -1,5 +1,9 @@
 import type { Metadata } from "next";
 import "./globals.css";
+import { Anton, Barlow } from "next/font/google";
+
+const display = Anton({ weight: "400", subsets: ["latin"], display: "swap", variable: "--font-display" });
+const body = Barlow({ weight: ["400", "500", "600", "700"], subsets: ["latin"], display: "swap", variable: "--font-body" });
 import { site } from "@/lib/site";
 import { services } from "@/lib/services";
 import { cities } from "@/lib/geo";
@@ -58,7 +62,7 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
     potentialAction: { "@type": "ReserveAction", name: "Get a free quote", target: `${site.url}/#quote` },
   };
   return (
-    <html lang="en">
+    <html lang="en" className={`${display.variable} ${body.variable}`}>
       <body>
         <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(ld) }} />
         {children}
