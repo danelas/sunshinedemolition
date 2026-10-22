@@ -18,7 +18,13 @@ export const cities: City[] = [
     slug: "hollywood", name: "Hollywood", zips: ["33019", "33020", "33021", "33023", "33024"],
     blurb: "Our home base. Our yard is on N 21st Ave, so Hollywood Lakes, Emerald Hills, the beach condos along A1A and the blocks west of I-95 are all minutes away.",
     local: "Hollywood has a lot of 1950s and 60s housing stock changing hands, which means estate cleanouts, garage purges and full interior demos before remodels. We also serve the Hollywood Beach condo corridor, where tight parking and service elevators call for a crew that has done it before.",
-    nearby: ["hallandale-beach", "pembroke-pines", "davie", "fort-lauderdale"],
+    nearby: ["dania-beach", "hallandale-beach", "pembroke-pines", "fort-lauderdale"],
+  },
+  {
+    slug: "dania-beach", name: "Dania Beach", zips: ["33004", "33312"],
+    blurb: "Right next door to our Hollywood yard. From the Dania Beach Pier and the beachside condos to Antique Row on Federal Highway and the neighborhoods west of I-95, a crew can usually be at your door the same day.",
+    local: "Dania Beach mixes older single-family homes, waterfront properties along the canals and marinas, and a busy commercial strip near the airport and the port. That means a steady run of estate cleanouts, garage and shed clear-outs, renovation debris from homes being updated, and furniture and fixture removal for shops and offices changing hands. Because we are only a few minutes away, small single-item pickups are just as welcome as full-trailer jobs.",
+    nearby: ["hollywood", "fort-lauderdale", "hallandale-beach", "davie"],
   },
   {
     slug: "pembroke-pines", name: "Pembroke Pines", zips: ["33023", "33024", "33025", "33026", "33027", "33028", "33029"],
