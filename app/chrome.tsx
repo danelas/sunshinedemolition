@@ -3,6 +3,7 @@ import { site } from "@/lib/site";
 import { services } from "@/lib/services";
 import { cities } from "@/lib/geo";
 import { Icon } from "./icons";
+import { guides } from "@/lib/guides";
 
 export function SiteHeader() {
   return (
@@ -51,6 +52,12 @@ export function SiteFooter() {
           <strong>Services:</strong>{" "}
           {services.map((s, i) => (
             <span key={s.slug}>{i > 0 && " · "}<Link href={`/services/${s.slug}`}>{s.title}</Link></span>
+          ))}
+        </div>
+        <div className="foot-links">
+          <strong>Guides:</strong>{" "}
+          {guides.map((g, i) => (
+            <span key={g.slug}>{i > 0 && " · "}<Link href={`/guides/${g.slug}`}>{g.title}</Link></span>
           ))}
         </div>
         <div className="foot-links">

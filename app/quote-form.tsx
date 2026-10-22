@@ -49,6 +49,7 @@ export default function QuoteForm({ defaultCity = "", defaultService = "Junk Rem
             <option>Home, Office & Warehouse Cleanouts</option>
             <option>Hoarder Cleanouts</option>
             <option>Demolition</option>
+            <option>Demolition Cleanup</option>
             <option>Other</option>
           </select>
         </div>

@@ -1,6 +1,7 @@
 import { site } from "./site";
 import { cities } from "./geo";
 import { services } from "./services";
+import { guides } from "./guides";
 
 const U = site.url;
 
@@ -25,6 +26,10 @@ export function llmsIndex(): string {
 ## Services
 
 ${services.map((s) => `- [${s.title}](${U}/services/${s.slug}): ${s.short}`).join("\n")}
+
+## Guides
+
+${guides.map((g) => `- [${g.title}](${U}/guides/${g.slug}): ${g.quickAnswer}`).join("\n")}
 
 ## Service area pages
 
@@ -88,6 +93,29 @@ ${svc}
 # Service area (full detail)
 
 ${geo}
+---
+
+# Guides (full detail)
+
+${guides
+  .map(
+    (g) => `## ${g.title}
+URL: ${U}/guides/${g.slug}
+
+${g.quickAnswer}
+
+${g.sections
+  .map(
+    (sec) =>
+      `### ${sec.heading}\n${(sec.body ?? []).join("\n\n")}${sec.list ? "\n" + sec.list.map((l) => `- ${l.title ? l.title + ": " : ""}${l.text}`).join("\n") : ""}${sec.table ? "\n" + [sec.table.head, ...sec.table.rows].map((r) => "| " + r.join(" | ") + " |").join("\n") : ""}`,
+  )
+  .join("\n\n")}
+
+FAQ:
+${g.faqs.map((f) => `- Q: ${f.q}\n  A: ${f.a}`).join("\n")}
+`,
+  )
+  .join("\n")}
 ---
 
 # How a job works
