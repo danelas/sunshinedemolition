@@ -2,7 +2,7 @@ import type { Metadata } from "next";
 import Link from "next/link";
 import { notFound } from "next/navigation";
 import { site } from "@/lib/site";
-import { guides, guideBySlug } from "@/lib/guides";
+import { guides, guideBySlug, guideBlurb } from "@/lib/guides";
 import { serviceBySlug } from "@/lib/services";
 import { SiteHeader, SiteFooter, CallBar, CtaBand, Faq, faqSchema } from "@/app/chrome";
 import QuoteForm from "@/app/quote-form";
@@ -32,7 +32,7 @@ export default async function GuidePage({ params }: Props) {
   const g = guideBySlug(slug);
   if (!g) notFound();
   const related = serviceBySlug(g.relatedService);
-  const other = guides.filter((x) => x.slug !== g.slug);
+  const other = guides.filter((x) => x.slug !== g.slug).slice(0, 3);
   const url = `${site.url}/guides/${g.slug}`;
 
   const ld = [
@@ -49,6 +49,7 @@ export default async function GuidePage({ params }: Props) {
       author: { "@type": "Organization", name: site.name, url: site.url },
       publisher: { "@type": "Organization", name: site.name, logo: { "@type": "ImageObject", url: `${site.url}${site.logo}` } },
       about: { "@id": `${site.url}/#business` },
+      ...(g.sources ? { citation: g.sources.map((src) => ({ "@type": "CreativeWork", name: src.label, url: src.url })) } : {}),
     },
     faqSchema(g.faqs),
     {
@@ -56,7 +57,8 @@ export default async function GuidePage({ params }: Props) {
       "@type": "BreadcrumbList",
       itemListElement: [
         { "@type": "ListItem", position: 1, name: "Home", item: site.url },
-        { "@type": "ListItem", position: 2, name: g.title, item: url },
+        { "@type": "ListItem", position: 2, name: "Guides", item: `${site.url}/guides` },
+        { "@type": "ListItem", position: 3, name: g.title, item: url },
       ],
     },
   ];
@@ -69,7 +71,7 @@ export default async function GuidePage({ params }: Props) {
         <div className="hero hero-sub">
           <div className="wrap">
             <div>
-              <p className="crumb"><Link href="/">Home</Link> › Guides › {g.title.replace(/\?$/, "")}</p>
+              <p className="crumb"><Link href="/">Home</Link> › <Link href="/guides">Guides</Link> › {g.title.replace(/\?$/, "")}</p>
               <span className="hero-icon"><Icon name={g.icon} size={34} /></span>
               <h1>{g.title}</h1>
               <p>{g.description.split(". ")[0]}.</p>
@@ -106,10 +108,10 @@ export default async function GuidePage({ params }: Props) {
                 {sec.table && (
                   <div className="table-scroll">
                     <table className="compare">
-                      <thead><tr>{sec.table.head.map((h) => <th key={h || "blank"} scope="col">{h}</th>)}</tr></thead>
+                      <thead><tr>{sec.table.head.map((h, j) => <th key={h || "blank"} scope="col" className={j === sec.table!.highlight ? "hl" : undefined}>{h}</th>)}</tr></thead>
                       <tbody>
                         {sec.table.rows.map((r) => (
-                          <tr key={r[0]}>{r.map((c, j) => (j === 0 ? <th key={j} scope="row">{c}</th> : <td key={j}>{c}</td>))}</tr>
+                          <tr key={r[0]}>{r.map((c, j) => (j === 0 ? <th key={j} scope="row">{c}</th> : <td key={j} className={j === sec.table!.highlight ? "hl" : undefined}>{c}</td>))}</tr>
                         ))}
                       </tbody>
                     </table>
@@ -142,11 +144,21 @@ export default async function GuidePage({ params }: Props) {
                 {other.map((o) => (
                   <Link className="svc svc-link" href={`/guides/${o.slug}`} key={o.slug}>
                     <span className="svc-icon"><Icon name={o.icon} size={28} /></span>
-                    <h3>{o.title}</h3><p>{o.quickAnswer.split(". ")[0]}.</p>
+                    <h3>{o.title}</h3><p>{guideBlurb(o)}</p>
                     <span className="svc-more">Read the guide<Icon name="arrow" size={16} /></span>
                   </Link>
                 ))}
               </div>
+              {g.sources && g.sources.length > 0 && (
+                <div className="guide-sources">
+                  <h3>Sources</h3>
+                  <ul>
+                    {g.sources.map((src) => (
+                      <li key={src.url}><a href={src.url} target="_blank" rel="noopener nofollow">{src.label}</a></li>
+                    ))}
+                  </ul>
+                </div>
+              )}
               <p className="guide-updated">Updated {new Date(g.updated + "T12:00:00").toLocaleDateString("en-US", { month: "long", day: "numeric", year: "numeric" })} by the {site.name} crew, {site.address.city}, FL.</p>
             </section>
           </div>

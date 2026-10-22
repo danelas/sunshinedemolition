@@ -14,6 +14,7 @@ export function SiteHeader() {
           <Link href="/#services">Services</Link>
           <Link href="/#work">Our Work</Link>
           <Link href="/#areas">Service Area</Link>
+          <Link href="/guides">Guides</Link>
           <Link href="/contact">Contact</Link>
           <Link href="/#quote">Free Quote</Link>
         </nav>
@@ -55,10 +56,11 @@ export function SiteFooter() {
           ))}
         </div>
         <div className="foot-links">
-          <strong>Guides:</strong>{" "}
-          {guides.map((g, i) => (
+          <strong><Link href="/guides">Guides</Link>:</strong>{" "}
+          {guides.slice(0, 3).map((g, i) => (
             <span key={g.slug}>{i > 0 && " · "}<Link href={`/guides/${g.slug}`}>{g.title}</Link></span>
           ))}
+          {guides.length > 3 && <> · <Link href="/guides">All {guides.length} guides</Link></>}
         </div>
         <div className="foot-links">
           <strong>Areas:</strong>{" "}

@@ -81,9 +81,16 @@ export default async function ServicePage({ params }: Props) {
           <div className="wrap prose">
             <h2>How our {s.title.toLowerCase()} service works</h2>
             <p>{s.intro}</p>
-            {guides.filter((g) => g.relatedService === s.slug).map((g) => (
-              <p key={g.slug} className="guide-link"><Icon name={g.icon} size={18} />New to this? Read <Link href={`/guides/${g.slug}`}>{g.title}</Link></p>
-            ))}
+            {guides.some((g) => g.relatedService === s.slug) && (
+              <div className="guide-links">
+                <p className="guide-links-label">Helpful guides</p>
+                <ul>
+                  {guides.filter((g) => g.relatedService === s.slug).map((g) => (
+                    <li key={g.slug}><Icon name={g.icon} size={18} /><Link href={`/guides/${g.slug}`}>{g.title}</Link></li>
+                  ))}
+                </ul>
+              </div>
+            )}
           </div>
         </section>
 

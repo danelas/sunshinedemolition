@@ -29,6 +29,8 @@ ${services.map((s) => `- [${s.title}](${U}/services/${s.slug}): ${s.short}`).joi
 
 ## Guides
 
+All guides: ${U}/guides
+
 ${guides.map((g) => `- [${g.title}](${U}/guides/${g.slug}): ${g.quickAnswer}`).join("\n")}
 
 ## Service area pages
